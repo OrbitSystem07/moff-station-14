@@ -16,12 +16,12 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Human, Animal, Rat, Plant ]
+          type: [ Human, Animal, Rat, Plant, IPC ]
       # Convert Oxygen into CO2.
       - !type:ModifyLungGas
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Vox ]
+          type: [ Vox, IPC ]
           inverted: true
         ratios:
           CarbonDioxide: 1.0
@@ -47,12 +47,12 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Human, Animal, Rat, Plant, Arachnid, Moth, Avali, Resomi ] # Moffstation
+          type: [ Human, Animal, Rat, Plant, Arachnid, Moth, Avali, Resomi, IPC ] # Moffstation
       # Convert Oxygen into CO2.
       - !type:ModifyLungGas
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Vox ]
+          type: [ Vox, IPC ]
           inverted: true
         ratios:
           CarbonDioxide: 1.0
@@ -99,7 +99,15 @@
         amount: -2.0
     Respiration:
       effects:
+      - !type:Oxygenate
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ IPC ] # Moffstation
       - !type:HealthChange
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ IPC ]
+          inverted: true
         ignoreResistances: true
         damage:
           types:
@@ -107,6 +115,10 @@
               0.1
       # We need a metabolism effect on reagent removal
       - !type:AdjustAlert
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ IPC ]
+          inverted: true
         alertType: Toxins
         minScale: 1.5
         clear: True
@@ -144,7 +156,15 @@
             Radiation: 1.5
     Respiration:
       effects:
+      - !type:Oxygenate
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ IPC ] # Moffstation
       - !type:HealthChange
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ IPC ]
+          inverted: true
         ignoreResistances: true
         damage:
           types:
@@ -152,6 +172,10 @@
               1
       # We need a metabolism effect on reagent removal
       - !type:AdjustAlert
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ IPC ]
+          inverted: true
         alertType: Toxins
         minScale: 1.5
         clear: True
@@ -170,11 +194,11 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Plant ]
+          type: [ Plant, IPC ]
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Plant, Vox ]
+          type: [ Plant, Vox, IPC ]
           inverted: true
         ignoreResistances: true
         damage:
@@ -192,12 +216,12 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Plant ]
+          type: [ Plant, IPC ]
       - !type:HealthChange
         minScale: 0.5
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Plant, Vox ]
+          type: [ Plant, Vox, IPC ]
           inverted: true
         # Don't want people to get toxin damage from the gas they just
         # exhaled, right?
@@ -209,7 +233,7 @@
       - !type:Oxygenate # carbon dioxide displaces oxygen from the bloodstream, causing asphyxiation
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Plant ]
+          type: [ Plant, IPC ]
           inverted: true
         factor: -4
       # We need a metabolism effect on reagent removal
@@ -237,7 +261,7 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Vox, Slime ]
+          type: [ Vox, Slime, IPC ]
       # Converts Nitrogen into Ammonia
       - !type:ModifyLungGas
         conditions:
@@ -272,11 +296,15 @@
             Poison: 1
     Respiration:
       effects:
+      - !type:Oxygenate
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ IPC ] # Moffstation
       - !type:Emote
         minScale: 0.2
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Slime ]
+          type: [ Slime, IPC ]
           inverted: true
         emote: Laugh
         showInChat: true
@@ -285,7 +313,7 @@
         minScale: 0.2
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Slime ]
+          type: [ Slime, IPC ]
           inverted: true
         emote: Scream
         showInChat: true
@@ -294,7 +322,7 @@
         minScale: 0.5
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Slime ]
+          type: [ Slime, IPC ]
           inverted: true
         type: Local
         visualType: Medium
@@ -304,7 +332,7 @@
         minScale: 1
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Slime ]
+          type: [ Slime, IPC ]
           inverted: true
         walkSpeedModifier: 0.65
         sprintSpeedModifier: 0.65
@@ -312,7 +340,7 @@
         minScale: 1.8
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Slime ]
+          type: [ Slime, IPC ]
           inverted: true
         effectProto: StatusEffectForcedSleeping
         time: 3
@@ -321,7 +349,7 @@
         minScale: 3.5
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Slime ]
+          type: [ Slime, IPC ]
           inverted: true
         ignoreResistances: true
         scaling: true
@@ -345,6 +373,10 @@
   metabolisms:
     Bloodstream:
       effects:
+      - !type:Oxygenate
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ IPC ] # Moffstation
       - !type:HealthChange
         ignoreResistances: true
         damage:
@@ -370,26 +402,50 @@
         minScale: 2
     Respiration:
       effects:
+      - !type:Oxygenate
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ IPC ] # Moffstation
       - !type:HealthChange
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ IPC ]
+          inverted: true
         minScale: 0.5
         ignoreResistances: true
         damage:
           types:
             Cellular: 0.05
       - !type:ModifyStatusEffect
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ IPC ]
+          inverted: true
         minScale: 1
         effectProto: StatusEffectSeeingRainbow
         type: Add
         time: 500
       - !type:Drunk
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ IPC ]
+          inverted: true
         boozePower: 500
         minScale: 1
       - !type:PopupMessage
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ IPC ]
+          inverted: true
         type: Local
         messages: [ "frezon-lungs-cold" ]
         probability: 0.1
         minScale: 1
       - !type:PopupMessage
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ IPC ]
+          inverted: true
         type: Local
         visualType: Medium
         messages: [ "frezon-euphoric" ]

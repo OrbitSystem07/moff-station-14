@@ -1,0 +1,223 @@
+﻿- type: markingsGroup
+  parent: Undergarments
+  id: IPC
+  limits:
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.FacialHair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 4 # Moffstation - Increase Markings
+      required: false
+    enum.HumanoidVisualLayers.Snout:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LArm:
+      limit: 4 # Moffstation - Increase Markings
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 4 # Moffstation - Increase Markings
+      required: false
+    enum.HumanoidVisualLayers.LHand:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RHand:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 4 # Moffstation - Increase Markings
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 4 # Moffstation - Increase Markings
+      required: false
+    enum.HumanoidVisualLayers.LFoot:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RFoot:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Tail:
+      limit: 1 # Moffstation - :3
+      required: false
+    enum.HumanoidVisualLayers.Special:
+      limit: 0
+      required: false
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceIPC
+  categories: [ HideSpawnMenu ]
+  name: ipc appearance
+  components:
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
+  - type: InitialBody
+    organs:
+      Torso: OrganIPCTorso
+      Head: OrganIPCHead
+      ArmLeft: OrganIPCArmLeft
+      ArmRight: OrganIPCArmRight
+      HandRight: OrganIPCHandRight
+      HandLeft: OrganIPCHandLeft
+      LegLeft: OrganIPCLegLeft
+      LegRight: OrganIPCLegRight
+      FootLeft: OrganIPCFootLeft
+      FootRight: OrganIPCFootRight
+      Brain: OrganIPCBrain
+      Eyes: OrganIPCEyes
+      Tongue: OrganIPCTongue
+      Appendix: OrganIPCAppendix
+      Ears: OrganIPCEars
+      Lungs: OrganIPCLungs
+      Heart: OrganIPCHeart
+      Stomach: OrganIPCStomach
+      Liver: OrganIPCLiver
+      Kidneys: OrganIPCKidneys
+  - type: HumanoidProfile
+    species: IPC
+
+- type: entity
+  parent:
+  - AppearanceIPC
+  - BaseSpeciesMobOrganic
+  id: MobIPC
+  name: Urist McPositronic
+  components:
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatHuman
+      amount: 5
+
+- type: entity
+  parent: OrganBaseOrganic
+  id: OrganIPC
+  abstract: true
+  suffix: IPC
+
+- type: entity
+  id: OrganIPCMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ IPC ]
+
+- type: entity
+  parent: OrganIPC
+  id: OrganIPCInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+
+- type: entity
+  parent: OrganIPC
+  id: OrganIPCExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/parts.rsi
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Species/Human/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Human
+
+- type: entity
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganIPCExternal ]
+  id: OrganIPCTorso
+
+- type: entity
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganIPCExternal ]
+  id: OrganIPCHead
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Hair
+    - enum.HumanoidVisualLayers.Snout
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganIPCExternal ]
+  id: OrganIPCArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganIPCExternal ]
+  id: OrganIPCArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganIPCExternal ]
+  id: OrganIPCHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganIPCExternal ]
+  id: OrganIPCHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganIPCExternal ]
+  id: OrganIPCLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganIPCExternal ]
+  id: OrganIPCLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganIPCExternal ]
+  id: OrganIPCFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganIPCExternal ]
+  id: OrganIPCFootRight
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganIPCInternal ]
+  id: OrganIPCBrain
+
+- type: entity
+  parent: [ OrganBaseEyes, OrganIPCInternal, OrganIPCExternal ]
+  id: OrganIPCEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Customization/eyes.rsi
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganIPCInternal ]
+  id: OrganIPCTongue
+
+- type: entity
+  parent: [ OrganBaseAppendix, OrganIPCInternal ]
+  id: OrganIPCAppendix
+
+- type: entity
+  parent: [ OrganBaseEars, OrganIPCInternal ]
+  id: OrganIPCEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganIPCInternal, OrganIPCMetabolizer ]
+  id: OrganIPCLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganIPCInternal, OrganHumanMetabolizer ]
+  id: OrganIPCHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganIPCInternal, OrganHumanMetabolizer ]
+  id: OrganIPCStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganIPCInternal, OrganHumanMetabolizer ]
+  id: OrganIPCLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganIPCInternal, OrganHumanMetabolizer ]
+  id: OrganIPCKidneys

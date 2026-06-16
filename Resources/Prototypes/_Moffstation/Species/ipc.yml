@@ -1,0 +1,8 @@
+﻿- type: species
+  id: IPC
+  name: species-ipc-name
+  roundStart: true
+  prototype: MobIPC
+  skinColoration: Hues
+  defaultSkinTone: "#b9b4d4"
+  dollPrototype: AppearanceIPC
