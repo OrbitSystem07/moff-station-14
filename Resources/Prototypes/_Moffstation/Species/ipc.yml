@@ -6,3 +6,8 @@
   skinColoration: Hues
   defaultSkinTone: "#b9b4d4"
   dollPrototype: AppearanceIPC
+  maleFirstNames: NamesIPCFirst
+  femaleFirstNames: NamesIPCFirst
+  lastNames: NamesIPCLast
+  sexes:
+  - Unsexed

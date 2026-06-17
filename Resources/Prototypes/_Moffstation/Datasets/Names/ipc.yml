@@ -3,3 +3,9 @@
   values:
     prefix: names-ipc-dataset-
     count: 1
+
+- type: localizedDataset
+  id: NamesIPCLast
+  values:
+    prefix: names-ipc-dataset-
+    count: 1
