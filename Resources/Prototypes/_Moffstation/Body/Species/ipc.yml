@@ -54,13 +54,6 @@
   categories: [ HideSpawnMenu ]
   name: ipc appearance
   components:
-  - type: Inventory
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Human/displacement.rsi
-            state: jumpsuit-female
   - type: InitialBody
     organs:
       Torso: OrganIPCTorso
@@ -134,11 +127,11 @@
       group: Human
 
 - type: entity
-  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganIPCExternal ]
+  parent: [ OrganBaseTorso, OrganIPCExternal ]
   id: OrganIPCTorso
 
 - type: entity
-  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganIPCExternal ]
+  parent: [ OrganBaseHead, OrganIPCExternal ]
   id: OrganIPCHead
   components:
   - type: VisualOrganMarkings
