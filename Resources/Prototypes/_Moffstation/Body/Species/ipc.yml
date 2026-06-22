@@ -90,6 +90,16 @@
     spawned:
     - id: FoodMeatHuman
       amount: 5
+  - type: ContainerContainer
+    containers:
+      key_slots: !type:Container
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCommon
+  - type: Headset
+  - type: EncryptionKeyHolder
+    keySlots: 4
 
 - type: entity
   parent: OrganBaseOrganic
