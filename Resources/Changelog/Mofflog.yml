@@ -6659,6 +6659,13 @@ Entries:
   id: 1579
   time: '2026-06-29T16:55:08.000'
   url: https://github.com/moff-station/moff-station-14/pull/1579
+- author: DuckManZach
+  changes:
+  - message: Reworked midround ghost roles!
+    type: add
+  id: 1580
+  time: '2026-08-04T20:40:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1580
 - author: Nyxilath
   changes:
   - message: Nanotrasen will no longer order pizza to the ATS.
@@ -7017,6 +7024,13 @@ Entries:
   id: 1647
   time: '2026-07-19T17:16:00.000'
   url: https://github.com/moff-station/moff-station-14/pull/1647
+- author: DrWhoFan13, BlueMoon59, TGRCDev
+  changes:
+  - message: Pronouns now show up on crew manifest
+    type: add
+  id: 1648
+  time: '2026-07-28T18:06:03.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1648
 - author: gummyema
   changes:
   - message: Added engineering and medical maid outfits
@@ -7174,11 +7188,31 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1672
 - author: DuckManZach
   changes:
+  - message: Fixed DAGD being far more common than it should be
+    type: fix
+  - message: Removed escape to CC, people dont really pick it in the objective picker.
+      If you wanna live then live!
+    type: remove
+  id: 1674
+  time: '2026-07-27T21:20:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1674
+- author: DuckManZach
+  changes:
   - message: You now rejuvenate after getting a kill in gungame!
     type: add
   id: 1676
   time: '2026-07-19T17:08:52.000'
   url: https://github.com/moff-station/moff-station-14/pull/1676
+- author: Mixelz
+  changes:
+  - message: Refreshed all Gun Game loadouts! Ask your local admin nicely to try it
+      out!
+    type: tweak
+  - message: Reduced Gun Game respawn wait from 5 seconds to 4 seconds.
+    type: tweak
+  id: 1677
+  time: '2026-07-31T18:58:26.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1677
 - author: Dave
   changes:
   - message: New Holopad sprites & hue adjustments.
@@ -7245,6 +7279,38 @@ Entries:
   id: 1685
   time: '2026-07-20T19:07:56.000'
   url: https://github.com/moff-station/moff-station-14/pull/1685
+- author: Centronias
+  changes:
+  - message: Stained clothes can now be examined to see what's staining them, similar
+      to examining drinks / reagents.
+    type: add
+  - message: Galoshes, breath masks, and sterile breath masks are now innately stain
+      repellent.
+    type: add
+  - message: ERT Janitors' uniforms are now innately stain repellent by virtue of
+      their inimitable cleanliness.
+    type: add
+  - message: Added "DrinkStainRepellent", a bottle of appliable stain-repellent coating
+      (and a box of four of them, "BoxStainRepellent"). It's unobtainable except via
+      spawning.
+    type: add
+  id: 1686
+  time: '2026-07-31T18:37:42.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1686
+- author: meganerobot
+  changes:
+  - message: Engineering hardsuits and the spationaut suit now have a toggleable welding
+      mask.
+    type: add
+  - message: Mesons no longer provide welding protection and now act as t-ray scanners.
+    type: tweak
+  - message: Welding masks greatly occlude your vision whilst you're using them.
+    type: tweak
+  - message: You can now flip up welding masks.
+    type: tweak
+  id: 1688
+  time: '2026-08-01T05:12:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1688
 - author: FreianOfVoid
   changes:
   - message: A "Hephaestus" Iconography option has been added to the AI's customization
@@ -7300,6 +7366,13 @@ Entries:
   id: 1707
   time: '2026-07-23T03:28:15.000'
   url: https://github.com/moff-station/moff-station-14/pull/1707
+- author: TillHero
+  changes:
+  - message: Blade servers now hurt you when someone shoves them in your face.
+    type: tweak
+  id: 1708
+  time: '2026-07-30T03:14:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1708
 - author: PanzerVo
   changes:
   - message: Floodlights in the Engi-Vend
@@ -7307,6 +7380,14 @@ Entries:
   id: 1713
   time: '2026-07-26T03:18:26.000'
   url: https://github.com/moff-station/moff-station-14/pull/1713
+- author: DuckManZach
+  changes:
+  - message: Map votes now fire mid-lobby, so that the playercount is more accurate
+      to the map.
+    type: tweak
+  id: 1714
+  time: '2026-07-28T19:00:36.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1714
 - author: FreianOfVoid
   changes:
   - message: Fixed the positioning and size of the Hephaestus AI iconography to match
@@ -7347,5 +7428,101 @@ Entries:
   id: 1729
   time: '2026-07-27T16:05:58.000'
   url: https://github.com/moff-station/moff-station-14/pull/1729
+- author: Dave
+  changes:
+  - message: Qm hardsuit sprites for Moff
+    type: add
+  - message: vox hardsuits now have tails added
+    type: fix
+  id: 1730
+  time: '2026-07-28T18:06:03.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1730
+- author: Nyxilath
+  changes:
+  - message: Artifacts have gotten their life together and will no longer ask for
+      Antidepressants, Meth, Lube, and Cleaner.
+    type: remove
+  id: 1731
+  time: '2026-07-31T20:27:40.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1731
+- author: Centronias
+  changes:
+  - message: The crew manifest has received a visual update.
+    type: tweak
+  id: 1740
+  time: '2026-08-01T23:25:31.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1740
+- author: Tezzaide
+  changes:
+  - message: Atmos Traitors now have access to the Syndicate Fire Axe
+    type: add
+  id: 1741
+  time: '2026-08-03T04:57:08.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1741
+- author: Centronias
+  changes:
+  - message: Jobs on the manifest once again sort with department heads above their
+      reports.
+    type: fix
+  id: 1742
+  time: '2026-07-29T20:13:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1742
+- author: DuckManZach
+  changes:
+  - message: Players now get playtime for playing again!
+    type: fix
+  id: 1743
+  time: '2026-07-29T23:19:51.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1743
+- author: DuckManZach
+  changes:
+  - message: The station is now a target of missile barrages!
+    type: add
+  id: 1744
+  time: '2026-08-03T03:24:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1744
+- author: meganerobot
+  changes:
+  - message: Tier 2 replicators (deconstructors and defenders) now have a visually
+      damaged state when they're disabled.
+    type: fix
+  id: 1746
+  time: '2026-07-30T19:50:22.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1746
+- author: Centronias
+  changes:
+  - message: Replicators now have toggleable night vision.
+    type: add
+  id: 1747
+  time: '2026-07-30T19:50:22.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1747
+- author: Nyxilath
+  changes:
+  - message: Reach has returned.
+    type: add
+  id: 1760
+  time: '2026-08-04T21:45:28.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1760
+- author: OrbitSystem07
+  changes:
+  - message: Added a personal item for The Wind Of Perserverance
+    type: add
+  id: 1761
+  time: '2026-08-04T04:58:36.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1761
+- author: Nyxilath
+  changes:
+  - message: Set Examine action icon has been fixed.
+    type: fix
+  id: 1762
+  time: '2026-08-03T18:37:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1762
+- author: DuckManZach
+  changes:
+  - message: Added new airlock sounds!
+    type: add
+  id: 1765
+  time: '2026-08-04T18:51:54.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1765
 Name: Mofflog
 Order: -2
