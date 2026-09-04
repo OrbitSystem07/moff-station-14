@@ -52,12 +52,20 @@
       - MobPurpleSnake
       - MobSmallPurpleSnake
       - MobCobraSpace
-      - MobAdultSlimesBlue
-      - MobAdultSlimesBlueAngry
-      - MobAdultSlimesGreen
-      - MobAdultSlimesGreenAngry
-      - MobAdultSlimesYellow
-      - MobAdultSlimesYellowAngry
+      # Moff Start - Migrated slime prototypes
+      # - MobAdultSlimesBlue
+      # - MobAdultSlimesBlueAngry
+      # - MobAdultSlimesGreen
+      # - MobAdultSlimesGreenAngry
+      # - MobAdultSlimesYellow
+      # - MobAdultSlimesYellowAngry
+      - MobAdultSlimesReformable
+      - MobAdultSlimesReformableAngry
+      - MobAdultSlimesReformablePoisonous
+      - MobAdultSlimesReformablePoisonousAngry
+      - MobAdultSlimesReformableAngrySmasher
+      - MobAdultSlimesReformablePoisonousAngrySmasher
+      # Moff End
 
 # nuke
 - type: entity
@@ -146,7 +154,7 @@
   - type: Objective
     difficulty: 1
     icon:
-      sprite: Mobs/Silicon/holograms.rsi
+      sprite: _Moffstation/Mobs/Silicon/holograms.rsi # Moffstation
       state: ai_face
   - type: NumberObjective
     min: 1

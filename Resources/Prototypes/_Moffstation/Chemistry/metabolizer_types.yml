@@ -11,9 +11,5 @@
   name: metabolizer-type-gray
 
 - type: metabolizerType
-  id: Vampire
-  name: metabolizer-type-vampire
-
-- type: metabolizerType
   id: IPC
   name: metabolizer-type-ipc
