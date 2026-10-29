@@ -1,6 +1,6 @@
 ﻿namespace Content.Shared._Moffstation.IPC.Components;
 
-public sealed class IPCRadioComponent : Component
+public sealed partial class IpcRadioComponent : Component
 {
     [DataField]
     public int KeySlots = 4;
