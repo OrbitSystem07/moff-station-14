@@ -9,9 +9,11 @@ namespace Content.Shared._Moffstation.IPC.Systems;
 public sealed partial class IpcRadio : EntitySystem
 {
     [Dependency] private SharedContainerSystem _container = null!;
+
     public override void Initialize()
     {
-        //SubscribeLocalEvent<IpcRadioComponent, InteractUsingEvent>(OnRadioInteractUsing);
+        SubscribeLocalEvent<IpcRadioComponent, InteractUsingEvent>(OnRadioInteractUsing);
+        SubscribeLocalEvent<IpcRadioComponent, ComponentStartup>(OnRadioStartup);
 
 
     }
@@ -20,12 +22,6 @@ public sealed partial class IpcRadio : EntitySystem
     {
         if (!TryComp<IpcRadioComponent>(target, out var radio))
             return false;
-
-        if (!TryComp<WiresPanelComponent>(target, out var panel) || !panel.Open)
-        {
-            //_popup.PopupPredicted(Loc.GetString("encryption-keys-panel-locked"), target, user);
-            return false;
-        }
 
         if (radio.KeyContainer.ContainedEntities.Count >= radio.KeySlots)
         {
@@ -45,15 +41,25 @@ public sealed partial class IpcRadio : EntitySystem
 
 
     public void OnRadioStartup(Entity<IpcRadioComponent> ent, ref ComponentStartup args)
-        {
-            ent.Comp.KeyContainer = _container.EnsureContainer<Container>(ent, ent.Comp.EncryptionKeysContainerID);
-            ent.Comp.RadioTransmitter = EnsureComp<IntrinsicRadioTransmitterComponent>(ent);
-            ent.Comp.ActiveRadio = EnsureComp<ActiveRadioComponent>(ent);
+    {
+        ent.Comp.KeyContainer = _container.EnsureContainer<Container>(ent, ent.Comp.EncryptionKeysContainerID);
 
+    }
+
+    private void OnRadioInteractUsing(Entity<IpcRadioComponent> uid, ref InteractUsingEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (HasComp<EncryptionKeyComponent>(args.Used))
+        {
+            InsertEncryptionKey(args.Target, args.User, args.Used);
+            args.Handled = true;
         }
 
 
 
 
 
+    }
 }

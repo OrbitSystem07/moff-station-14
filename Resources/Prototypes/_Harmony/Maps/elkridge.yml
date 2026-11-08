@@ -2,8 +2,8 @@
   id: Elkridge
   mapName: 'Elkridge Depot'
   mapPath: /Maps/_Harmony/elkridge.yml
-  minPlayers: 26 # Moffstation - Low Pop
-  maxPlayers: 60 # Moffstation - Low Pop
+  minPlayers: 11 # Ultra-Low Pop
+  maxPlayers: 35 # Ultra-Low Pop
   stations:
     Elkridge:
       stationProto: StandardNanotrasenStation
@@ -14,7 +14,8 @@
             !type:NanotrasenNameGenerator
             prefixCreator: 'DS'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/_Harmony/Shuttles/emergency_elkridge.yml
+          # Moff - Evac arrivals
+          emergencyShuttlePath: /Maps/_Moffstation/Shuttles/emergency_elkridge.yml
         - type: StationCargoShuttle
           path: /Maps/_Harmony/Shuttles/cargo_elkridge.yml
         - type: StationJobs
@@ -35,7 +36,7 @@
             Chaplain: [ 1, 1 ]
             Librarian: [ 1, 1 ]
             Reporter: [ 1, 1 ]
-            ServiceWorker: [ 2, 1 ]
+            ServiceWorker: [ 2, 2 ] # Moff - Job weight rework barfs on initial slots > total slots
             #engineering (5 - 6)
             AtmosphericTechnician: [ 2, 2 ]
             StationEngineer: [ 3, 3 ]

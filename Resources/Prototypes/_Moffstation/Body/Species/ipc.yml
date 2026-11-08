@@ -97,13 +97,13 @@
     containers:
       key_slots:
       - EncryptionKeyCommon
-  - type: Headset
   - type: EncryptionKeyHolder
     keySlots: 4
     keysExtractionMethod: Cutting
   - type: ActiveRadio
   - type: IntrinsicRadioReceiver
   - type: IntrinsicRadioTransmitter
+  - type: IpcRadio
 
 - type: entity
   parent: OrganBaseOrganic

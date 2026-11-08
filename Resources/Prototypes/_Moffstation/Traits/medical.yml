@@ -58,6 +58,16 @@
     item: OffsetCane
 
 - type: trait
+  id: BlinkDyspraxia
+  name: trait-blink-dyspraxia-name
+  description: trait-blink-dyspraxia-desc
+  category: Medical
+  effects:
+  - !type:ApplyStatusEffectSpecial
+    statusEffects:
+    - TraitStatusEffectBlinkDyspraxia
+
+- type: trait
   id: Feeble
   name: trait-feeble-disability-name
   description: trait-feeble-disability-desc
@@ -83,10 +93,9 @@
   description: trait-clumsy-disability-desc
   category: Medical
   effects:
-  - !type:AddCompsEffect
-    components:
-    - type: Clumsy
-      clumsySound: null
+  - !type:ApplyStatusEffectSpecial
+    statusEffects:
+    - MoffStatusEffectClumsyTrait
 
 - type: trait
   id: Snoring

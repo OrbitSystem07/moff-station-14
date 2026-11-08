@@ -1,6 +1,8 @@
-﻿using Content.Shared.Radio.Components;
+﻿using Content.Shared.Radio;
+using Content.Shared.Radio.Components;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Moffstation.IPC.Components;
 
@@ -18,12 +20,10 @@ public sealed partial class IpcRadioComponent : Component
     [DataField]
     public string EncryptionKeysContainerID = "key_slots";
 
+    [DataField]
+    public HashSet<ProtoId<RadioChannelPrototype>> ActiveRadioChannels = new();
 
-    [ViewVariables(VVAccess.ReadWrite)]
-    public IntrinsicRadioTransmitterComponent RadioTransmitter = null!;
-
-    [ViewVariables(VVAccess.ReadWrite)]
-    public ActiveRadioComponent ActiveRadio = null!;
-
+    [DataField]
+    public HashSet<ProtoId<RadioChannelPrototype>> TransmitterRadioChannels = new();
 
 }

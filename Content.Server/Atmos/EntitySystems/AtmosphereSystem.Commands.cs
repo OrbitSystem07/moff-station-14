@@ -33,34 +33,34 @@ public sealed partial class AtmosphereSystem
     [AdminCommand(AdminFlags.Debug)]
     private void FixGridAtmosCommand(IConsoleShell shell, string argstr, string[] args)
     {
-       if (args.Length == 0)
-       {
-           shell.WriteError("Not enough arguments.");
-           return;
-       }
+        if (args.Length == 0)
+        {
+            shell.WriteError("Not enough arguments.");
+            return;
+        }
 
-       foreach (var arg in args)
-       {
-           if (!NetEntity.TryParse(arg, out var netEntity) || !TryGetEntity(netEntity, out var euid))
-           {
-               shell.WriteError($"Failed to parse euid '{arg}'.");
-               return;
-           }
+        foreach (var arg in args)
+        {
+            if (!NetEntity.TryParse(arg, out var netEntity) || !TryGetEntity(netEntity, out var euid))
+            {
+                shell.WriteError($"Failed to parse euid '{arg}'.");
+                return;
+            }
 
-           if (!TryComp(euid, out MapGridComponent? gridComp))
-           {
-               shell.WriteError($"Euid '{euid}' does not exist or is not a grid.");
-               return;
-           }
+            if (!TryComp(euid, out MapGridComponent? gridComp))
+            {
+                shell.WriteError($"Euid '{euid}' does not exist or is not a grid.");
+                return;
+            }
 
-           if (!TryComp(euid, out GridAtmosphereComponent? gridAtmosphere))
-           {
-               shell.WriteError($"Grid \"{euid}\" has no atmosphere component, try addatmos.");
-               continue;
-           }
+            if (!TryComp(euid, out GridAtmosphereComponent? gridAtmosphere))
+            {
+                shell.WriteError($"Grid \"{euid}\" has no atmosphere component, try addatmos.");
+                continue;
+            }
 
-           RebuildGridAtmosphere((euid.Value, gridAtmosphere, gridComp));
-       }
+            RebuildGridAtmosphere((euid.Value, gridAtmosphere, gridComp));
+        }
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public sealed partial class AtmosphereSystem
     /// <remarks>Please be responsible with this method. Used only by tests and fixgridatmos.</remarks>
     public void RebuildGridAtmosphere(Entity<GridAtmosphereComponent, MapGridComponent> ent)
     {
-        var mixtures = new GasMixture[9];
+        var mixtures = new GasMixture[10]; /// Moffstation - Incremented by +1 for Hot Air Marker
         for (var i = 0; i < mixtures.Length; i++)
         {
             mixtures[i] = new GasMixture(Atmospherics.CellVolume) { Temperature = Atmospherics.T20C };
@@ -107,6 +107,11 @@ public sealed partial class AtmosphereSystem
         mixtures[8].AdjustMoles(Gas.Oxygen, Atmospherics.OxygenMolesGasMiner);
         mixtures[8].AdjustMoles(Gas.Nitrogen, Atmospherics.NitrogenMolesGasMiner);
 
+        // Moffstation 9: Hot Air @ 60C (GM) - Added for Igneus Station
+        mixtures[9].AdjustMoles(Gas.Oxygen, Atmospherics.OxygenMolesStandard);
+        mixtures[9].AdjustMoles(Gas.Nitrogen, Atmospherics.NitrogenMolesStandard);
+        mixtures[9].Temperature = 333.15f;
+
 
         // Force Invalidate & update air on all tiles
         Entity<GridAtmosphereComponent, GasTileOverlayComponent, MapGridComponent, TransformComponent> grid =
@@ -116,12 +121,12 @@ public sealed partial class AtmosphereSystem
 
         foreach (var (indices, tile) in ent.Comp1.Tiles.ToArray())
         {
-            if (tile.Air is not {Immutable: false} air)
+            if (tile.Air is not { Immutable: false } air)
                 continue;
 
             air.Clear();
             var mixtureId = 0;
-            var enumerator = _mapSystem.GetAnchoredEntitiesEnumerator(grid, grid, indices);
+            var enumerator = _mapSystem.GetAnchoredEntities(grid, grid, indices);
             while (enumerator.MoveNext(out var entUid))
             {
                 if (_atmosFixMarkerQuery.TryComp(entUid, out var marker))
@@ -162,7 +167,7 @@ public sealed partial class AtmosphereSystem
         var volume = GetVolumeForTiles(ent);
         TryComp(ent.Comp4.MapUid, out MapAtmosphereComponent? mapAtmos);
 
-        var enumerator = _map.GetAllTilesEnumerator(ent, ent);
+        var enumerator = _map.GetAllTiles(ent, ent);
         while (enumerator.MoveNext(out var tileRef))
         {
             var tile = GetOrNewTile(ent, ent, tileRef.Value.GridIndices);

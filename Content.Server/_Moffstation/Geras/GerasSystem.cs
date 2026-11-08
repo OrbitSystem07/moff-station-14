@@ -5,12 +5,10 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body;
 using Content.Server.Inventory;
 using Content.Server.Popups;
-using Content.Server.Temperature.Systems;
-using Content.Server.Traits;
-using Content.Shared._DV.Traits;
 using Content.Shared._Moffstation.Body.Events;
 using Content.Shared._Moffstation.Damage.Events;
 using Content.Shared._Moffstation.Geras;
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Events;
@@ -29,6 +27,7 @@ using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.ParcelWrap.Components;
 using Content.Shared.Preferences;
 using Content.Shared.Projectiles;
 using Content.Shared.StatusEffect;
@@ -41,7 +40,6 @@ using Content.Shared.Temperature.HeatContainer;
 using Content.Shared.Zombies;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server._Moffstation.Geras;
 
@@ -65,16 +63,14 @@ public sealed partial class GerasSystem : EntitySystem
     [Dependency] private SharedSubdermalImplantSystem _implantSystem = default!;
     [Dependency] private HumanoidProfileSystem _profileSystem = default!;
     [Dependency] private SharedContainerSystem _container = default!;
-    [Dependency] private SharedBloodstreamSystem _bloodstream = default!;
+    [Dependency] private BloodstreamSystem _bloodstream = default!;
     [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private SharedEnsnareableSystem _ensnareable = default!;
     [Dependency] private SharedProjectileSystem _projectile = default!;
-    [Dependency] private HungerSystem _hunger = default!;
-    [Dependency] private ThirstSystem _thirst = default!;
+    [Dependency] private SatiationSystem _satiation = default!;
     [Dependency] private SharedStaminaSystem  _stamina = default!;
     [Dependency] private TraitSystem _trait = default!;
     [Dependency] private FlammableSystem _flammable = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     private const string GerasIdSlot = "id";
 
@@ -96,8 +92,7 @@ public sealed partial class GerasSystem : EntitySystem
         SubscribeLocalEvent<StorageComponent, PreMorphGerasEvent>(OnTransferStorage);
         SubscribeLocalEvent<StatusEffectsComponent, PreMorphGerasEvent>(OnTransferOldStatus);
         SubscribeLocalEvent<StatusEffectContainerComponent, PreMorphGerasEvent>(OnTransferNewStatus);
-        SubscribeLocalEvent<HungerComponent, PreMorphGerasEvent>(OnTransferHunger);
-        SubscribeLocalEvent<ThirstComponent, PreMorphGerasEvent>(OnTransferThirst);
+        SubscribeLocalEvent<SatiationComponent, PreMorphGerasEvent>(OnTransferSatiation);
         SubscribeLocalEvent<GerasComponent, TraitsAppliedEvent>(OnTraitsApplied);
     }
 
@@ -189,10 +184,11 @@ public sealed partial class GerasSystem : EntitySystem
             {
                 _container.AttachParentToContainerOrGrid((uid, Transform(uid)));
             }
-        }
-        if (_container.IsEntityOrParentInContainer(uid))// If the entity is in any other container, put the geras in that container
-        {
-            _transform.DropNextTo(geras, uid);
+            else // If the entity is in any other container, put the geras in that container
+            {
+                _container.Remove(uid, container, force: false, reparent: true);
+                _container.Insert(geras, container);
+            }
         }
 
         _implantSystem.TransferImplants(uid, geras);
@@ -347,19 +343,18 @@ public sealed partial class GerasSystem : EntitySystem
         RaiseLocalEvent(args.Geras, ref newStatusTransferEv);
     }
 
-    private void OnTransferHunger(Entity<HungerComponent> ent, ref PreMorphGerasEvent args)
+    private void OnTransferSatiation(Entity<SatiationComponent> ent, ref PreMorphGerasEvent args)
     {
-        if (TryComp<HungerComponent>(args.Geras, out var gerasHunger))
+        if (TryComp<SatiationComponent>(args.Geras, out var gerasSatiation))
         {
-            _hunger.SetHunger(args.Geras, _hunger.GetHunger(ent.Comp), gerasHunger);
-        }
-    }
+            var hungerValue = _satiation.GetValueOrNull(ent, SatiationSystem.Hunger);
+            var thirstValue = _satiation.GetValueOrNull(ent, SatiationSystem.Thirst);
 
-    private void OnTransferThirst(Entity<ThirstComponent> ent, ref PreMorphGerasEvent args)
-    {
-        if (TryComp<ThirstComponent>(args.Geras, out var gerasThirst))
-        {
-            _thirst.SetThirst(args.Geras, gerasThirst, ent.Comp.CurrentThirst);
+            if (!hungerValue.HasValue || !thirstValue.HasValue)
+                return;
+
+            _satiation.SetValue(ent, SatiationSystem.Hunger, hungerValue.Value);
+            _satiation.SetValue(ent, SatiationSystem.Thirst, thirstValue.Value);
         }
     }
 
@@ -368,10 +363,8 @@ public sealed partial class GerasSystem : EntitySystem
         if (ent.Comp.Geras is not { } geras)
             return;
 
-        foreach (var traitId in args.Profile.TraitPreferences)
+        foreach (var trait in ProtoMan.ResolveAll(args.Traits))
         {
-            if (_prototypeManager.TryIndex(traitId, out var trait) || trait == null)
-                continue;
             _trait.ApplyTrait(geras, trait);
         }
     }
@@ -406,8 +399,6 @@ public sealed partial class GerasSystem : EntitySystem
         QueueDel(component.StorageMap);
     }
 }
-
-public record struct GerasVisualInitEvent(HumanoidCharacterProfile? Profile);
 
 [ByRefEvent]
 public record struct PreMorphGerasEvent(EntityUid Geras);

@@ -26,19 +26,17 @@
   - type: SyncSprite
   - type: Clickable
   - type: Sprite
-    sprite: Tiles/Planet/lava.rsi
+    sprite: Tiles/TileEntities/liquid-lava.rsi
     drawdepth: BelowFloor
-    layers:
-      - state: lava
-        shader: unshaded
   - type: Icon
-    sprite: Tiles/Planet/lava.rsi
+    sprite: Tiles/TileEntities/liquid-lava.rsi
     state: full
   - type: IconSmooth
-    key: floor
-    additionalKeys:
-    - walls
-    base: lava
+    key: lava
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ lava, walls ]
+      base: water
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -53,6 +51,10 @@
           - ItemMask
         density: 1000
         hard: false
-  - type: Tag
-    tags:
-      - HideContextMenu
+# Moff Start - Why is this context menu hidden? Removed for Igneus Station.
+  # - type: Tag
+  #   tags:
+  #     - HideContextMenu
+# Moff End
+  - type: PlacementReplacement
+    key: tileOverlay

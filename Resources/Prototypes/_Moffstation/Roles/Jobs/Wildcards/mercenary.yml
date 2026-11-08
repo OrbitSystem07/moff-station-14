@@ -21,7 +21,6 @@
     - SmokeGrenade
     - GrenadeShrapnel
     - WeaponPistolPM
-    - WeaponDisabler
     outerClothing:
     - MagazinePistol
     - MagazinePistol
@@ -43,7 +42,6 @@
     - SmokeGrenade
     - GrenadeShrapnel
     - WeaponRevolverInspector
-    - WeaponDisabler
     back:
     - MagazineLightRifle
     - MagazineLightRifle
@@ -82,7 +80,7 @@
     - RadioHandheld
     - Gauze
     - Multitool
-    - trayScanner
+    - TRayScanner
     - GasAnalyzer
     - C4
     - C4
@@ -95,7 +93,6 @@
     - Welder
     - ClothingHeadHatWelding
     - WeaponPistolPM
-    - WeaponDisabler
 
 - type: startingGear
   parent: MercenaryBasicGear
@@ -115,7 +112,6 @@
     - MedkitCombatFilled
     - SmokeGrenade
     - WeaponPistolPM
-    - WeaponDisabler
     outerClothing:
     - MagazineLightRifle
     - MagazineLightRifle

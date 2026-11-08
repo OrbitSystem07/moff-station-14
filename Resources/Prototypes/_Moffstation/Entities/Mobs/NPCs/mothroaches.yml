@@ -131,10 +131,13 @@
       - id: MobMothroachRosy
       - id: MobMothroachDeathshead
       - id: MobMothroachMechroach
+      - id: MobMoproachHat
+        weight: 0.1
       - id: MobMothroachRainbow
         weight: 0.01
       - id: MobMothroachSyndicate
         weight: 0.001
+
 - type: entity
   parent: MarkerBase
   id: RandomMothroachSpawner
@@ -144,7 +147,7 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: Mobs/Animals/mothroach/mothroach.rsi
+    - sprite: Mobs/Animals/Insects/mothroach/mothroach.rsi
       state: mothroach
   - type: EntityTableSpawner
     offset: 0.2

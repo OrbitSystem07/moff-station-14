@@ -39,7 +39,6 @@
     back:
     - HandHeldMassScanner
     - ClothingShoesBootsMagSci
-    - WeaponDisabler
     belt:
     - CrowbarRed
     - PowerDrill
@@ -88,10 +87,9 @@
   storage:
     back:
     - HandHeldMassScanner
-    - trayScanner
+    - TRayScanner
     - GasAnalyzer
     - ClothingShoesBootsMagSci
-    - WeaponDisabler
     belt:
     - CrowbarRed
     - PowerDrill

@@ -58,7 +58,10 @@
   id: SecurityWeaponsStatic
   recipes:
   - Flash
-  - Stunbaton
+  # Moff start - no stuns
+  #- Stunbaton
+  - Nightstick
+  # Moff end
   - CombatKnife
   - RiotShield
 
@@ -121,8 +124,6 @@
   - MagazinePistolSubMachineGunUranium
   - MagazineRifleIncendiary
   - MagazineRifleUranium
-  - MagazineShotgunBeanbag
-  - MagazineShotgunIncendiary
   - SpeedLoaderMagnumIncendiary
   - SpeedLoaderMagnumUranium
 
@@ -136,9 +137,11 @@
   - WeaponXrayCannon
   - WeaponTemperatureGun
 
-- type: latheRecipePack
-  id: SecurityDisablers
-  recipes:
-  - WeaponDisabler
-  - WeaponDisablerSMG
-  - ClothingHandsKnuckleDustersStun # Moffstation - Stun Knuckles are cool
+# Moffstation - Start - no stuns
+#- type: latheRecipePack
+#  id: SecurityDisablers
+#  recipes:
+#  - WeaponDisabler
+#  - WeaponDisablerSMG
+#  - ClothingHandsKnuckleDustersStun # Moffstation - Stun Knuckles are cool
+# Moffstation - End

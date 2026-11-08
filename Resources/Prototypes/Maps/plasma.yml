@@ -2,8 +2,8 @@
   id: Plasma
   mapName: 'Plasma'
   mapPath: /Maps/plasma.yml
-  minPlayers: 41 # Moffstation - Medium Pop
-  maxPlayers: 75 # Moffstation - Medium Pop
+  minPlayers: 26 # Moffstation - Low Pop
+  maxPlayers: 60 # Moffstation - Low Pop
   stations:
     Plasma:
       stationProto: StandardNanotrasenStation
@@ -14,7 +14,8 @@
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Shuttles/emergency_plasma.yml
+          # Moff - Evac arrivals
+          emergencyShuttlePath: /Maps/_Moffstation/Shuttles/emergency_plasma.yml
         - type: StationCargoShuttle
           path: /Maps/Shuttles/cargo_plasma.yml
         - type: StationJobs

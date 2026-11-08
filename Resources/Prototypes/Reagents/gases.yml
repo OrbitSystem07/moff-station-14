@@ -16,12 +16,12 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Human, Animal, Rat, Plant, Thaven, IPC ] #Macrocosm, add Thaven, Moffstation - IPCs
+          type: [ Human, Animal, Rat, Plant, Arachnid, IPC, Thaven ] #Macrocosm, add Thaven
       # Convert Oxygen into CO2.
       - !type:ModifyLungGas
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Vox, IPC ]
+          type: [ Vox ]
           inverted: true
         ratios:
           CarbonDioxide: 1.0
