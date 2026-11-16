@@ -8548,6 +8548,15 @@ Entries:
   id: 1977
   time: '2026-10-01T19:11:10.000'
   url: https://github.com/moff-station/moff-station-14/pull/1977
+- author: Dave
+  changes:
+  - message: Sofas
+    type: add
+  - message: Resprite Comfy Chair
+    type: tweak
+  id: 1978
+  time: '2026-11-04T22:54:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1978
 - author: Centronias
   changes:
   - message: Iris "Monster" Foundling's personal items now have different names for
@@ -8750,6 +8759,13 @@ Entries:
   id: 2018
   time: '2026-10-18T16:42:56.000'
   url: https://github.com/moff-station/moff-station-14/pull/2018
+- author: Pixel8-dev
+  changes:
+  - message: Papers now only turn to ash from Heat damage.
+    type: fix
+  id: 2019
+  time: '2026-10-30T19:32:29.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2019
 - author: DrWhoFan13
   changes:
   - message: Fail Gloriously's Wedding Ring
@@ -8883,6 +8899,15 @@ Entries:
   id: 2047
   time: '2026-10-19T17:26:23.000'
   url: https://github.com/moff-station/moff-station-14/pull/2047
+- author: StudMuffin
+  changes:
+  - message: Arachnid can now create a web rope at the cost of 8 webs
+    type: add
+  - message: You can now attach yourself to structures using a web rope.
+    type: add
+  id: 2049
+  time: '2026-10-30T20:58:27.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2049
 - author: Dave
   changes:
   - message: vulpkanin leg fade markings work now
@@ -8978,6 +9003,14 @@ Entries:
   id: 2070
   time: '2026-10-26T16:53:51.000'
   url: https://github.com/moff-station/moff-station-14/pull/2070
+- author: Centronias
+  changes:
+  - message: Getting stained by a creature which is bleeding out no longer miraculously
+      extracts their innards from their body.
+    type: fix
+  id: 2071
+  time: '2026-10-29T19:04:29.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2071
 - author: DuckManZach
   changes:
   - message: Increased likelyhood of traitors
@@ -8985,6 +9018,13 @@ Entries:
   id: 2073
   time: '2026-10-27T16:39:00.000'
   url: https://github.com/moff-station/moff-station-14/pull/2073
+- author: DuckManZach
+  changes:
+  - message: The Hypereutactic Blade is now unobtainable
+    type: remove
+  id: 2076
+  time: '2026-10-30T18:26:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2076
 - author: DuckManZach
   changes:
   - message: Wizard duel has been derotated.
@@ -9006,5 +9046,115 @@ Entries:
   id: 2080
   time: '2026-10-28T21:05:04.000'
   url: https://github.com/moff-station/moff-station-14/pull/2080
+- author: DuckManZach
+  changes:
+  - message: Removed the arrivals energy gates
+    type: remove
+  id: 2081
+  time: '2026-10-29T18:24:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2081
+- author: gummyema
+  changes:
+  - message: Added 7 new costumes to the DramaDrobe, sprited by Frodmaer, gummyema,
+      and Morgan.
+    type: add
+  id: 2083
+  time: '2026-10-29T20:25:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2083
+- author: Centronias
+  changes:
+  - message: Fixed an issue where telecomms blade servers did not work.
+    type: fix
+  id: 2085
+  time: '2026-10-29T19:04:29.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2085
+- author: Mixelz
+  changes:
+  - message: Squashed various issues found on Igneus Station, including broken accesses
+      and errant wiring.
+    type: fix
+  id: 2087
+  time: '2026-10-29T20:31:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2087
+- author: StudMuffin
+  changes:
+  - message: The plant analyzer is now included in the botany cyborg module
+    type: add
+  id: 2089
+  time: '2026-10-30T20:23:53.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2089
+- author: Shedonk, Duckmanzach
+  changes:
+  - message: Added two new outfits to the dramadrobe!
+    type: add
+  id: 2091
+  time: '2026-10-30T20:36:37.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2091
+- author: siannodel0
+  changes:
+  - message: Added Aisling's Cello!
+    type: add
+  id: 2092
+  time: '2026-10-31T17:12:47.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2092
+- author: DuckManZach
+  changes:
+  - message: Fixed stains sometimes becoming desynced from the client.
+    type: fix
+  id: 2093
+  time: '2026-11-02T20:13:13.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2093
+- author: Centronias
+  changes:
+  - message: The captain's sabre can no longer be inserted into PDAs.
+    type: fix
+  id: 2094
+  time: '2026-10-31T20:46:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2094
+- author: Centronias
+  changes:
+  - message: Removed the generalized musique module now that the musique module is
+      compatible with all cyborg chassis.
+    type: remove
+  id: 2095
+  time: '2026-10-31T21:08:13.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2095
+- author: Centronias
+  changes:
+  - message: Fix cyborgs can get flashed again.
+    type: add
+  id: 2096
+  time: '2026-11-01T18:43:28.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2096
+- author: Nyxilath
+  changes:
+  - message: Push horns are now considered to be bike horns.
+    type: tweak
+  id: 2097
+  time: '2026-11-04T12:28:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2097
+- author: Wintoli
+  changes:
+  - message: Brad figures back to og sprites.
+    type: tweak
+  id: 2101
+  time: '2026-11-04T04:45:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2101
+- author: Centronias
+  changes:
+  - message: Picking up items into a preexisting material stack will no longer animate
+      an interaction particle from you to the picked up item.
+    type: tweak
+  id: 2103
+  time: '2026-11-05T20:20:45.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2103
+- author: Centronias
+  changes:
+  - message: The End of Round dialog should no longer be prevented from appearing
+      by typing certain text as your last words before round end.
+    type: fix
+  id: 2104
+  time: '2026-11-05T01:11:55.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2104
 Name: Mofflog
 Order: -2

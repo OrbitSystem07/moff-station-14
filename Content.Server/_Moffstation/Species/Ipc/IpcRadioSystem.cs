@@ -29,6 +29,7 @@ public sealed partial class IpcRadioSystem : EntitySystem
         {
             if (TryComp<EncryptionKeyComponent>(key, out var keyComponent))
             {
+                //TODO: Fix it so that common isnt added
                 ent.Comp.ActiveRadioChannels.UnionWith(keyComponent.Channels);
                 ent.Comp.TransmitterRadioChannels.UnionWith(keyComponent.Channels);
 
