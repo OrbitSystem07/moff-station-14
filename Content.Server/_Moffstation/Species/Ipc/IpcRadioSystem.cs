@@ -39,7 +39,7 @@ public sealed partial class IpcRadioSystem : EntitySystem
         UpdateChannels(ent);
     }
 
-    protected void UpdateChannels(Entity<IpcRadioComponent> ent)
+    private void UpdateChannels(Entity<IpcRadioComponent> ent)
     {
 
 
